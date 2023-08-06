@@ -3,6 +3,7 @@ package com.prajjwal.rest.webservices.restfulwebservices.controllers;
 import com.prajjwal.rest.webservices.restfulwebservices.models.HelloWorldBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,5 +31,9 @@ public class HelloWorldController {
 
     // Even the error page that you receive on making a request on a wrong endpoint you, is AutoConfigured as a
     // part of ErrorMVCAutoConfiguration.
+    @GetMapping("/hello-world/path-variable/{name}")
+    public HelloWorldBean HelloWorldPathVariable(@PathVariable(value = "name") String thisName){
+        return new HelloWorldBean(thisName);
+    }
 
 }
